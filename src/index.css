@@ -4,3 +4,7 @@
   box-sizing: border-box;
   font-family: "Roboto";
 }
+
+.root-box > *:not(:last-child){
+  margin-bottom: 2.5em;
+}

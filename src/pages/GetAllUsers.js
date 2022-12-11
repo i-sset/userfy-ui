@@ -1,11 +1,15 @@
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
+import UserNav from '../components/UserNav/UserNav';
 import UserTable from '../components/UserTable/UserTable';
 
 let GetAllUsers = () => {
     return (
-        <Container>
-            <UserTable />
-        </Container>
+        <Box className='root-box'>
+            <UserNav />
+            <Container>
+                <UserTable />
+            </Container>
+        </Box>
     )
 }
 

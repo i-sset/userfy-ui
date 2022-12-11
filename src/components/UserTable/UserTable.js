@@ -20,12 +20,7 @@ let UserTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-            <TableRow>
-              <TableCell>3</TableCell>
-              <TableCell>Josset Garcia</TableCell>
-              <TableCell>isset.josset@gmail.com</TableCell>
-              <TableCell>26</TableCell>
-            </TableRow>
+            
         </TableBody>
       </Table>
     </TableContainer>

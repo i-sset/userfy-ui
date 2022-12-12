@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import './UserTable.css';
 
-let UserTable = () => {
+let UserTable = ({data}) => {
     return (
         <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} className="user-table" >

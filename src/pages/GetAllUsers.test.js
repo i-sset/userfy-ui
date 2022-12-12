@@ -8,8 +8,7 @@ jest.mock('../api/UserAPI');
 
 describe('<GetAllUsers />', () => {
     describe("render list of users", () => {
-        const usersList = {
-            users: [
+        const users = [
                 {
                     id: 1,
                     name: 'Josset',
@@ -17,9 +16,9 @@ describe('<GetAllUsers />', () => {
                     age: 26
                 }
             ]
-        }
+
         beforeEach(async () => {
-            UserAPI.getAll.mockResolvedValue({data: usersList});
+            UserAPI.getAll.mockResolvedValue({data: users});
             await act(async () => {
                 render(<GetAllUsers />);
             });

@@ -1,8 +1,17 @@
 import { screen, render} from '@testing-library/react'
 import UserTable from "./UserTable";
+
 describe("<UserTable />", () => {
+    const users = [
+            {
+                id: 1,
+                name: 'Josset',
+                email: 'isset.josset@gmail.com',
+                age: 26
+            }
+        ]
     beforeEach(() => {
-        render(<UserTable />);
+        render(<UserTable data={users}/>);
     });
 
     it ("should display table headers with correct text", () => {

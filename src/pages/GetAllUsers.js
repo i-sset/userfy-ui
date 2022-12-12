@@ -9,11 +9,9 @@ let GetAllUsers = () => {
 
     const [usersList, setUsersList] = useState([]);
 
-
     useEffect(() => {
-        UserAPI.getAll().then(({data}) => {
-            const { users } = data;
-            setUsersList(users);
+        UserAPI.getAll().then(( {data} ) => {
+            setUsersList(data);
         })
     }, []);
 
@@ -21,7 +19,7 @@ let GetAllUsers = () => {
         <Box className='root-box'>
             <UserNav />
             <Container>
-                <UserTable data={usersList}/>
+                {usersList &&<UserTable data={usersList}/>}
             </Container>
         </Box>
     )

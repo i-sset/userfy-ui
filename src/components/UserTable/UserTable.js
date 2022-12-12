@@ -8,6 +8,20 @@ import Paper from '@mui/material/Paper';
 import './UserTable.css';
 
 let UserTable = ({data}) => {
+
+  function renderRows() {
+    return data.map((item, index) => {
+      return (
+        <TableRow key={index}>
+          <TableCell>{item.ID}</TableCell>
+          <TableCell>{item.Name}</TableCell>
+          <TableCell>{item.Email}</TableCell>
+          <TableCell>{item.Age}</TableCell>
+        </TableRow>
+      )
+    });
+  }
+
     return (
         <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} className="user-table" >
@@ -20,7 +34,7 @@ let UserTable = ({data}) => {
           </TableRow>
         </TableHead>
         <TableBody>
-            
+            {renderRows()}
         </TableBody>
       </Table>
     </TableContainer>

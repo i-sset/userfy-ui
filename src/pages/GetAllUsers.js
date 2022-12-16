@@ -1,6 +1,5 @@
 import { Box, Button, Container } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import UserAPI from '../api/UserAPI';
 import UserForm from '../components/UserForm/UserForm';
 import UserNav from '../components/UserNav/UserNav';

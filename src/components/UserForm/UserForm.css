@@ -1,0 +1,28 @@
+
+.css-1oqqzyl-MuiContainer-root.user-container {
+    display: flex;
+    flex-direction: column;
+    align-items:center
+}
+
+.css-1nrlq1o-MuiFormControl-root.form-field__fullwidth{
+    width:100%;
+}
+
+.css-1nrlq1o-MuiFormControl-root.form-field__age{
+    width:15%;
+}
+
+.css-1nrlq1o-MuiFormControl-root.form-control {
+    margin-bottom:2em;
+    display: flex;
+}
+
+.form-row__name {
+    display: flex;
+    gap:2em;
+}
+
+.form-button {
+    width:100%;
+}

@@ -39,6 +39,19 @@ const UserForm = ({ user, handleBackAction }) => {
                     handleBackAction(true);
                 }
             })
+        } else {
+            let createUser = {
+                firstname,
+                lastname,
+                email,
+                age: parseInt(age)
+            };
+            UserAPI.insert(createUser)
+            .then(response => {
+                if (response.status == 201) {
+                    handleBackAction(true);
+                }
+            })
         }
     };
 

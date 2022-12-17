@@ -29,4 +29,19 @@ describe('UserAPI', () => {
         });
 
     });
+    describe('insert user', () => {
+        it("should call update endpoint", async () => {
+            let user = {
+                firstname: 'josset',
+                lastname: 'garcia',
+                email: 'isset.josset@gmail.com',
+                age: 26
+            };
+            let insertURL = endpoint + "/user";
+
+            await UserAPI.insert(user);
+            expect(axios.post).toHaveBeenCalledWith(insertURL, user);
+        });
+
+    });
 });

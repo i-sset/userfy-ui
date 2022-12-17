@@ -8,7 +8,7 @@ describe("<UserTable />", () => {
             name: 'Josset',
             email: 'isset.josset@gmail.com',
             age: 26
-        }, 
+        },
         {
             id: 10,
             name: 'Joseto',
@@ -42,5 +42,5 @@ describe("<UserTable />", () => {
         expect(
             screen.getAllByRole('button')
         ).toHaveLength(totalButtons);
-});
+    });
 });

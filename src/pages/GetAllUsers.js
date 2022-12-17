@@ -10,6 +10,7 @@ let GetAllUsers = () => {
     const [usersList, setUsersList] = useState([]);
     const [showTable, setShowTable] = useState(true);
     const [showForm, setShowForm] = useState(false);
+    const [user, setUser] = useState();
 
     let handleBackAction = (e) => {
         setUser(null);
@@ -19,6 +20,12 @@ let GetAllUsers = () => {
     let handleNewUserButton = (e) => {
         setShowForm(true);
         setShowTable(false);
+    };
+ 
+    let handleEditButton = (user) => {
+        setUser(user);
+        setShowTable(false);
+        setShowForm(true);
     };
     useEffect(() => {
         UserAPI.getAll().then(({ data }) => {
@@ -30,8 +37,10 @@ let GetAllUsers = () => {
         <Box className='root-box'>
             <UserNav handleBackAction={handleBackAction}/>
             <Container>
+                {showForm && <UserForm user={user}/>}
                 {showTable && usersList && (<>
                     <Button variant='contained' color='success' onClick={handleNewUserButton}>Add new User</Button>
+                    <UserTable data={usersList} handleEdit={handleEditButton} />
                 </>)
                 }
             </Container>

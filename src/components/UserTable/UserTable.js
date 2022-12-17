@@ -8,8 +8,12 @@ import Paper from '@mui/material/Paper';
 import './UserTable.css';
 import { Button } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
-import { margin } from '@mui/system';
-let UserTable = ({ data }) => {
+let UserTable = ({ data, handleEdit, handleDelete }) => {
+
+  let handleEditButton = (e) => {
+    let user = retrieveUserFromTable(e.target);
+    handleEdit(user);
+  };
 
   function renderRows() {
     return data.map((item, index) => {
@@ -20,8 +24,8 @@ let UserTable = ({ data }) => {
           <TableCell>{item.Email}</TableCell>
           <TableCell>{item.Age}</TableCell>
           <TableCell>
-            <Button color='error' startIcon={<Delete /> }>Delete</Button>
-            <Button color='info' startIcon={<Edit />}>Edit</Button>
+            <Button color='error' startIcon={<Delete />}>Delete</Button>
+            <Button color='info' startIcon={<Edit />} onClick={handleEditButton}>Edit</Button>
           </TableCell>
         </TableRow>
       )
@@ -48,4 +52,13 @@ let UserTable = ({ data }) => {
   )
 }
 
+function retrieveUserFromTable(buttonPressed) {
+  const tableCells = buttonPressed.parentElement.parentElement.children;
+  let id = tableCells[0].textContent;
+  let name = tableCells[1].textContent;
+  let email = tableCells[2].textContent;
+  let age = tableCells[3].textContent;
+  let user = { id, name, email, age };
+  return user;
+}
 export default UserTable;

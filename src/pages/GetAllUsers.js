@@ -11,11 +11,15 @@ let GetAllUsers = () => {
     const [showTable, setShowTable] = useState(true);
     const [showForm, setShowForm] = useState(false);
 
+    let handleBackAction = (e) => {
+        setUser(null);
+        setShowForm(false);
+        setShowTable(true);
+    }
     let handleNewUserButton = (e) => {
         setShowForm(true);
         setShowTable(false);
     };
-
     useEffect(() => {
         UserAPI.getAll().then(({ data }) => {
             setUsersList(data);
@@ -24,12 +28,10 @@ let GetAllUsers = () => {
 
     return (
         <Box className='root-box'>
-            <UserNav />
+            <UserNav handleBackAction={handleBackAction}/>
             <Container>
-                {showForm && <UserForm />}
                 {showTable && usersList && (<>
                     <Button variant='contained' color='success' onClick={handleNewUserButton}>Add new User</Button>
-                    <UserTable data={usersList} />
                 </>)
                 }
             </Container>

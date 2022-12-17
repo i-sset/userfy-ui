@@ -20,7 +20,8 @@ let UserTable = ({ data, handleEdit, handleDelete }) => {
       return (
         <TableRow key={index}>
           <TableCell>{item.ID}</TableCell>
-          <TableCell>{item.Name}</TableCell>
+          <TableCell>{item.Firstname}</TableCell>
+          <TableCell>{item.Lastname}</TableCell>
           <TableCell>{item.Email}</TableCell>
           <TableCell>{item.Age}</TableCell>
           <TableCell>
@@ -38,7 +39,8 @@ let UserTable = ({ data, handleEdit, handleDelete }) => {
         <TableHead>
           <TableRow>
             <TableCell>ID</TableCell>
-            <TableCell>Name</TableCell>
+            <TableCell>First Name</TableCell>
+            <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Age</TableCell>
             <TableCell>Actions</TableCell>
@@ -55,10 +57,11 @@ let UserTable = ({ data, handleEdit, handleDelete }) => {
 function retrieveUserFromTable(buttonPressed) {
   const tableCells = buttonPressed.parentElement.parentElement.children;
   let id = tableCells[0].textContent;
-  let name = tableCells[1].textContent;
-  let email = tableCells[2].textContent;
-  let age = tableCells[3].textContent;
-  let user = { id, name, email, age };
+  let firstname = tableCells[1].textContent;
+  let lastname = tableCells[2].textContent;
+  let email = tableCells[3].textContent;
+  let age = tableCells[4].textContent;
+  let user = { id, firstname, lastname, email, age };
   return user;
 }
 export default UserTable;

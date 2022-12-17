@@ -5,13 +5,15 @@ describe("<UserTable />", () => {
     const users = [
         {
             id: 1,
-            name: 'Josset',
+            firstname: 'Josset',
+            lastname: 'Garcia',
             email: 'isset.josset@gmail.com',
             age: 26
         },
         {
             id: 10,
-            name: 'Joseto',
+            firstname: 'Joseto',
+            lastname: 'Master',
             email: 'josetomaster@gmail.com',
             age: 30
         }
@@ -23,13 +25,15 @@ describe("<UserTable />", () => {
     it("should display table headers with correct text", () => {
         let columnHeaders = screen.getAllByRole('columnheader');
         let idColumn = columnHeaders[0];
-        let nameColumn = columnHeaders[1];
-        let emailColumn = columnHeaders[2];
-        let ageColumn = columnHeaders[3];
-        let actionsColumn = columnHeaders[4];
+        let firstnameColumn = columnHeaders[1];
+        let lastnameColumn = columnHeaders[2];
+        let emailColumn = columnHeaders[3];
+        let ageColumn = columnHeaders[4];
+        let actionsColumn = columnHeaders[5];
 
         expect(idColumn.textContent).toEqual("ID");
-        expect(nameColumn.textContent).toEqual("Name");
+        expect(firstnameColumn.textContent).toEqual("First Name");
+        expect(lastnameColumn.textContent).toEqual("Last Name");
         expect(emailColumn.textContent).toEqual("Email");
         expect(ageColumn.textContent).toEqual("Age");
         expect(actionsColumn.textContent).toEqual("Actions");

@@ -11,7 +11,8 @@ describe('<GetAllUsers />', () => {
         const users = [
                 {
                     id: 1,
-                    name: 'Josset',
+                    firstname: 'Josset',
+                    lastname: 'Garcia',
                     email: 'isset.josset@gmail.com',
                     age: 26
                 }

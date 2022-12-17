@@ -11,12 +11,15 @@ let GetAllUsers = () => {
     const [showTable, setShowTable] = useState(true);
     const [showForm, setShowForm] = useState(false);
     const [user, setUser] = useState();
+    const [fetchFlag, setFetchFlag] = useState(false);
 
-    let handleBackAction = (e) => {
+    let handleBackAction = (shouldFetch) => {
         setUser(null);
         setShowForm(false);
         setShowTable(true);
+        setFetchFlag(shouldFetch);
     }
+    
     let handleNewUserButton = (e) => {
         setShowForm(true);
         setShowTable(false);
@@ -31,13 +34,13 @@ let GetAllUsers = () => {
         UserAPI.getAll().then(({ data }) => {
             setUsersList(data);
         })
-    }, []);
+    }, [fetchFlag]);
 
     return (
         <Box className='root-box'>
             <UserNav handleBackAction={handleBackAction}/>
             <Container>
-                {showForm && <UserForm user={user}/>}
+                {showForm && <UserForm user={user} handleBackAction={handleBackAction}/>}
                 {showTable && usersList && (<>
                     <Button variant='contained' color='success' onClick={handleNewUserButton}>Add new User</Button>
                     <UserTable data={usersList} handleEdit={handleEditButton} />

@@ -9,7 +9,7 @@ let UserNav = ({handleBackAction}) => {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                        <Typography variant="h4" className='app-link' onClick={handleBackAction}>Userfy</Typography>
+                        <Typography variant="h4" className='app-link' onClick={(e) => { handleBackAction(false)}}>Userfy</Typography>
                 </Toolbar>
             </AppBar>
         </Box>

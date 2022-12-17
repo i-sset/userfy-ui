@@ -1,8 +1,9 @@
 import { Container, FormControl, FormGroup, InputLabel, TextField, Typography, Input, Button } from "@mui/material";
 import { useState } from "react";
 import './UserForm.css'
+import UserAPI from "../../api/UserAPI";
 
-const UserForm = ({ user }) => {
+const UserForm = ({ user, handleBackAction }) => {
     let pageTitle = user == null ? 'Add New User' : 'Update Existent User';
     let [firstname, setFirstname] = useState(user?.firstname || '');
     let [lastname, setLastname] = useState(user?.lastname || '');
@@ -21,6 +22,24 @@ const UserForm = ({ user }) => {
     };
     let handleAge = (e) => {
         setAge(parseInt(e.target.value));
+    };
+
+    let handleSubmit = (e) => {
+        if (user != null) {
+            let updatedUser = {
+                id: parseInt(user.id),
+                firstname,
+                lastname,
+                email,
+                age: parseInt(age)
+            };
+            UserAPI.update(updatedUser)
+            .then(response => {
+                if (response.status == 200) {
+                    handleBackAction(true);
+                }
+            })
+        }
     };
 
     return <Container className="user-container">
@@ -43,7 +62,7 @@ const UserForm = ({ user }) => {
                 <TextField id="age" label="Age" type="number" onChange={handleAge} value={age} />
             </FormControl>
 
-            <Button variant="contained" color="success" className="form-button">Submit</Button>
+            <Button variant="contained" color="success" className="form-button" onClick={handleSubmit}>Submit</Button>
         </form >
     </Container >
 }

@@ -42,6 +42,16 @@ describe('UserAPI', () => {
             await UserAPI.insert(user);
             expect(axios.post).toHaveBeenCalledWith(insertURL, user);
         });
+    });
 
+    describe('delete user', () => {
+        it("should call delete endpoint", async () => {
+            let userID = 1;
+            let deleteURL = endpoint + "/user/delete/" + userID;
+
+            
+            await UserAPI.delete(userID);
+            expect(axios.delete).toHaveBeenCalledWith(deleteURL);
+        });
     });
 });

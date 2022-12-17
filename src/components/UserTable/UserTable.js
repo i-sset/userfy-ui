@@ -8,11 +8,23 @@ import Paper from '@mui/material/Paper';
 import './UserTable.css';
 import { Button } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
-let UserTable = ({ data, handleEdit, handleDelete }) => {
+import UserAPI from '../../api/UserAPI';
+
+let UserTable = ({ data, handleEdit }) => {
 
   let handleEditButton = (e) => {
     let user = retrieveUserFromTable(e.target);
     handleEdit(user);
+  };
+
+  let handleDeleteButton = (e) => {
+    let user = retrieveUserFromTable(e.target);
+    UserAPI.delete(user.id)
+    .then(response => {
+      if (response.status == 204) {
+        removeRow(e.target);
+      }
+    });
   };
 
   function renderRows() {
@@ -25,7 +37,7 @@ let UserTable = ({ data, handleEdit, handleDelete }) => {
           <TableCell>{item.Email}</TableCell>
           <TableCell>{item.Age}</TableCell>
           <TableCell>
-            <Button color='error' startIcon={<Delete />}>Delete</Button>
+            <Button color='error' startIcon={<Delete />} onClick={handleDeleteButton}>Delete</Button>
             <Button color='info' startIcon={<Edit />} onClick={handleEditButton}>Edit</Button>
           </TableCell>
         </TableRow>
@@ -63,5 +75,10 @@ function retrieveUserFromTable(buttonPressed) {
   let age = tableCells[4].textContent;
   let user = { id, firstname, lastname, email, age };
   return user;
+}
+
+function removeRow(buttonPressed) {
+  let tableRow = buttonPressed.parentElement.parentElement;
+  tableRow.remove();
 }
 export default UserTable;

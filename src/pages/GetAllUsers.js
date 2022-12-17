@@ -30,6 +30,10 @@ let GetAllUsers = () => {
         setShowTable(false);
         setShowForm(true);
     };
+
+    let handleDeleteButton = (shouldFetch) => {
+        setFetchFlag(shouldFetch);
+    }
     useEffect(() => {
         UserAPI.getAll().then(({ data }) => {
             setUsersList(data);
@@ -43,7 +47,7 @@ let GetAllUsers = () => {
                 {showForm && <UserForm user={user} handleBackAction={handleBackAction}/>}
                 {showTable && usersList && (<>
                     <Button variant='contained' color='success' onClick={handleNewUserButton}>Add new User</Button>
-                    <UserTable data={usersList} handleEdit={handleEditButton} />
+                    <UserTable data={usersList} handleEdit={handleEditButton} handleDelete={handleDeleteButton}/>
                 </>)
                 }
             </Container>
